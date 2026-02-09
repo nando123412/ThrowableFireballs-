@@ -1,0 +1,175 @@
+# ====================================
+# ThrowableFireballs Configuration
+# ====================================
+# Author: nandoothjuuh
+# Version: 1.0.0
+#
+# This plugin allows players to throw fireballs as projectiles.
+# All settings are fully configurable below.
+#
+# Color codes: Use & for colors (e.g., &c for red, &a for green)
+# ====================================
+
+# ====================================
+# ITEM SETTINGS
+# ====================================
+# Configure what item is used to throw fireballs
+item:
+  # Material name (must be valid Bukkit Material)
+  # Default: FIRE_CHARGE
+  material: FIRE_CHARGE
+  
+  # Custom model data (for resource packs)
+  custom-model-data:
+    enabled: false
+    value: 0
+  
+  # Custom display name (requires exact match to throw)
+  display-name:
+    enabled: false
+    value: "&cFireball"
+  
+  # Should the item be consumed when thrown?
+  consume-on-throw: true
+  
+  # Should the item be consumed in creative mode?
+  consume-in-creative: false
+
+# ====================================
+# PROJECTILE SETTINGS
+# ====================================
+# Configure the fireball projectile behavior
+projectile:
+  # Type of fireball to spawn
+  # Options: SMALL (SmallFireball) or LARGE (Fireball)
+  # SMALL is recommended for balanced gameplay
+  type: SMALL
+  
+  # Velocity multiplier for the fireball
+  # Higher = faster projectile
+  # Default: 1.5
+  speed: 1.5
+
+# ====================================
+# EXPLOSION SETTINGS
+# ====================================
+# Configure explosion behavior
+# 
+# IMPORTANT: Disabling block-damage does NOT disable entity/player damage!
+# Players will still take damage even if blocks are protected.
+explosion:
+  # Should fireballs break blocks?
+  # Set to false to protect terrain while still damaging players
+  # Default: false (blocks protected, players still take damage)
+  block-damage: false
+  
+  # Should fireballs damage players and entities?
+  # Set to false to disable all damage (visual explosion only)
+  # Default: true
+  entity-damage: true
+  
+  # Explosion power/radius (Paper TNT equivalent)
+  # Vanilla TNT = 4.0, Creeper = 3.0
+  # Default: 1.0
+  power: 1.0
+  
+  # Should explosions create fire?
+  # Default: true
+  create-fire: true
+  
+  # Fire duration in ticks (20 ticks = 1 second)
+  # Only applies when create-fire is true
+  # Default: 100 (5 seconds)
+  fire-ticks: 100
+
+# ====================================
+# DAMAGE SETTINGS
+# ====================================
+# Configure direct hit damage
+damage:
+  # Direct hit damage (when fireball hits entity before exploding)
+  direct-hit:
+    enabled: true
+    # Damage in half-hearts (1.0 = half a heart, 2.0 = 1 heart)
+    # Default: 5.0 (2.5 hearts)
+    amount: 5.0
+
+# ====================================
+# COOLDOWN SETTINGS
+# ====================================
+# Anti-spam protection
+cooldown:
+  # Cooldown time in milliseconds
+  # 1000 = 1 second
+  # Default: 1000
+  time-millis: 1000
+  
+  # Show cooldown message in action bar?
+  # Default: true
+  show-actionbar: true
+
+# ====================================
+# PROTECTION SETTINGS
+# ====================================
+# Integration with protection plugins
+protection:
+  # Respect WorldGuard regions?
+  # Requires WorldGuard to be installed
+  # Default: true
+  respect-worldguard: true
+  
+  # Check if player can build before throwing?
+  # Basic fallback protection
+  # Default: true
+  check-build-permission: true
+
+# ====================================
+# PER-PLAYER SETTINGS
+# ====================================
+# Allow players to customize their own fireballs
+per-player-settings:
+  # Allow players to toggle block damage for their fireballs?
+  # Permission: throwablefireballs.blockdamage.toggle
+  # Command: /tfireballs blockdamage <on|off>
+  # Default: true
+  allow-block-damage-toggle: true
+
+# ====================================
+# MESSAGES
+# ====================================
+# Customize all plugin messages
+# Color codes: Use & for colors
+messages:
+  prefix: "&8[&cFireballs&8]&r "
+  
+  # General messages
+  no-permission: "&cYou don't have permission to do that!"
+  reload-success: "&aConfiguration reloaded successfully!"
+  player-not-found: "&cPlayer not found!"
+  invalid-amount: "&cInvalid amount! Please use a positive number."
+  
+  # Throwing messages
+  cooldown: "&cWait {time}s before throwing another fireball!"
+  wrong-item: "&cYou need a fireball item to throw!"
+  cannot-throw-here: "&cYou cannot throw fireballs in this area!"
+  
+  # Give command messages
+  give-success: "&aGave {amount} fireball(s) to {player}!"
+  receive-fireballs: "&aYou received {amount} fireball(s)!"
+  
+  # Block damage toggle messages
+  block-damage-enabled: "&aYour fireballs will now break blocks!"
+  block-damage-disabled: "&cYour fireballs will no longer break blocks, but will still damage entities."
+  block-damage-toggle-disabled: "&cBlock damage toggle is disabled by the server!"
+  
+  # Usage messages
+  usage: "&eUsage: /tfireballs <reload|give|blockdamage>"
+  usage-give: "&eUsage: /tfireballs give <player> [amount]"
+  usage-blockdamage: "&eUsage: /tfireballs blockdamage <on|off>"
+
+# ====================================
+# DEBUG
+# ====================================
+# Enable debug logging?
+# Default: false
+debug: false

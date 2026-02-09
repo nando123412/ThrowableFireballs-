@@ -1,0 +1,60 @@
+name: ThrowableFireballs
+version: ${version}
+main: com.nandoothjuuh.throwablefireballs.ThrowableFireballsPlugin
+api-version: '1.21'
+author: nandoothjuuh
+description: Throw fireballs as projectiles with configurable damage and explosion settings
+website: https://github.com/nando123412/ThrowableFireballs
+
+# Soft dependencies (optional plugins we integrate with)
+softdepend: [WorldGuard]
+
+commands:
+  tfireballs:
+    description: Main command for ThrowableFireballs plugin
+    usage: /<command> <reload|give|blockdamage>
+    aliases: [tfb, throwablefireball]
+    permission: throwablefireballs.use
+
+permissions:
+  # Main permissions
+  throwablefireballs.*:
+    description: Grants access to all ThrowableFireballs features
+    default: op
+    children:
+      throwablefireballs.use: true
+      throwablefireballs.bypasscooldown: true
+      throwablefireballs.bypassprotection: true
+      throwablefireballs.admin: true
+      throwablefireballs.blockdamage.toggle: true
+
+  throwablefireballs.use:
+    description: Allows throwing fireballs
+    default: true
+
+  throwablefireballs.bypasscooldown:
+    description: Bypass the cooldown for throwing fireballs
+    default: op
+
+  throwablefireballs.bypassprotection:
+    description: Bypass region protection checks when throwing fireballs
+    default: op
+
+  throwablefireballs.admin:
+    description: Access to admin commands (reload, give)
+    default: op
+    children:
+      throwablefireballs.reload: true
+      throwablefireballs.give: true
+
+  throwablefireballs.reload:
+    description: Reload the plugin configuration
+    default: op
+
+  throwablefireballs.give:
+    description: Give fireball items to players
+    default: op
+
+  throwablefireballs.blockdamage.toggle:
+    description: Toggle block damage for your own fireballs
+    default: true

@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.nandoothjuuh.throwablefireballs'
+version = '1.1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc-repo'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        name = 'enginehub'
+        url = 'https://maven.enginehub.org/repo/'
+    }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT'
+    compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.9'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    filteringCharset = 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand('version': project.version)
+    }
+}
+
+jar {
+    archiveClassifier.set('')
+}
+
+build {
+    dependsOn jar
+}
